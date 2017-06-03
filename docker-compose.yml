@@ -1,0 +1,12 @@
+version: "2"
+services:
+  web:
+    image: robinsondotnet/pythonstuff
+    ports:
+    - "4000:80"
+  rabbit1:
+    image:  bijukunjummen/rabbitmq-server
+    hostname: rabbit1
+    ports:
+      - "5672:5672"
+      - "15672:15672"

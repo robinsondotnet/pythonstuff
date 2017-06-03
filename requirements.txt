@@ -1,0 +1,7 @@
+Flask
+Redis
+Flask-SQLAlchemy
+Flask-WTF
+Spark
+Celery
+cx_Oracle
