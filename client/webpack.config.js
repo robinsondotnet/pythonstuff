@@ -13,7 +13,7 @@ var config = {
 
     output: {
         filename: "bundle.js",
-        path: path.dirname(__dirname) + "/public",
+        path: path.dirname(__dirname) + "/assets",
     },
     module: {
         loaders: [

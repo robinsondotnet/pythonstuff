@@ -1,12 +1,7 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template
 from celery import Celery
-from app.api.v1 import tasks
-import os
-import socket
+from app.api.v1 import tasks, auth
 
-
-#connecting to Redis
 
 celeryApp = Celery('tasks', broker='amqp://guest@rabbit1')
 
@@ -16,21 +11,30 @@ def add(x, y):
 
 app = Flask(__name__)
 
+# TODO: Register as group for /api/v1/
 app.register_blueprint(tasks, url_prefix='/api/v1')
-db = SQLAlchemy(app)
+app.register_blueprint(auth, url_prefix='/api/v1')
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
+@app.route('/')
+def index():
+    """
+    Home Page
+    """
+    return render_template('index.html')
 
-    def __init__(self, username):
-        self.username = username
+@app.route('/login')
+def login():
+    """
+    Login Page
+    """
+    return 'login'
 
-    def __repr__(self):
-        return '<User %r>' % self.username
-
-
-db.create_all()
+@app.route('/signup')
+def signup():
+    """
+    Signup Page
+    """
+    return 'signup'
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)

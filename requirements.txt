@@ -5,3 +5,4 @@ Flask-WTF
 py4j
 Spark
 Celery
+Flask-Webpack

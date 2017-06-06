@@ -7,5 +7,4 @@ tasks = Blueprint('tasks', __name__)
 
 @tasks.route('/tasks/')
 def get():
-
     return 'hola desde resource module (blueprint)'

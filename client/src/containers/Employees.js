@@ -22,8 +22,8 @@ class Employees extends React.Component {
         return(
             <div>
                 <Search/>
-            <EmployeeGrid; employees={this.state.employees} />
-            </div>;
+            <EmployeeGrid employees={this.state.employees} />
+            </div>
     )
     }
 }

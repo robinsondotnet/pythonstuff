@@ -8,10 +8,9 @@ import EmployeesContainer from './containers/Employees';
 class App extends React.Component {
     render () {
         return (
-            <EmployeesContainer; {...this.props} />
+            <EmployeesContainer {...this.props} />
     )
     }
 }
 
-render( < App / >, document.getElementById('app');
-)
+render( <App / >, document.getElementById('app'));
