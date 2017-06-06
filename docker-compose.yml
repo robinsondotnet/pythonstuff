@@ -4,9 +4,13 @@ services:
     image: robinsondotnet/pythonstuff
     ports:
     - "4000:80"
+    depends_on:
+      - "spark"
   rabbit1:
     image:  bijukunjummen/rabbitmq-server
     hostname: rabbit1
     ports:
       - "5672:5672"
       - "15672:15672"
+  spark:
+    image:  coorpacademy/docker-pyspark

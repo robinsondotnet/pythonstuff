@@ -2,6 +2,6 @@ Flask
 Redis
 Flask-SQLAlchemy
 Flask-WTF
+py4j
 Spark
 Celery
-cx_Oracle

@@ -1,8 +1,7 @@
 from flask import Flask
-from redis import Redis, RedisError
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
 from celery import Celery
+from app.api.v1 import tasks
 import os
 import socket
 
@@ -15,9 +14,9 @@ celeryApp = Celery('tasks', broker='amqp://guest@rabbit1')
 def add(x, y):
     return x + y
 
-
-
 app = Flask(__name__)
+
+app.register_blueprint(tasks, url_prefix='/api/v1')
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -32,28 +31,6 @@ class User(db.Model):
 
 
 db.create_all()
-
-@app.route("/")
-def Hello():
-    try:
-        myuser = User('kento\'s User')
-        db.session.add(myuser)
-        db.session.commit()
-
-        users = User.query.all()
-
-        visits = ''
-
-        for user in users:
-            visits  += "id:{0} username:{1}".format(user.id, user.username)
-
-    except RedisError:
-        visits = "<i>cannot connect to Redis, counter disabled</i>"
-
-    html = "<h3> Hello {name}! </h3>"\
-           "<b> Hostname:</b> {hostname}<br />" \
-           "<b> Visits: </b> {visits}"
-    return html.format(name=os.getenv("NAME", "world"), hostname= socket.gethostname(), visits=visits)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
