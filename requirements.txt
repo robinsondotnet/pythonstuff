@@ -6,3 +6,4 @@ py4j
 Spark
 Celery
 Flask-Webpack
+gunicorn

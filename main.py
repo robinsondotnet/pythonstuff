@@ -3,11 +3,11 @@ from celery import Celery
 from app.api.v1 import tasks, auth
 
 
-celeryApp = Celery('tasks', broker='amqp://guest@rabbit1')
-
-@celeryApp.task
-def add(x, y):
-    return x + y
+# celeryApp = Celery('tasks', broker='amqp://guest@rabbit1')
+#
+# @celeryApp.task
+# def add(x, y):
+#     return x + y
 
 app = Flask(__name__)
 
@@ -37,4 +37,4 @@ def signup():
     return 'signup'
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
+    app.run()
