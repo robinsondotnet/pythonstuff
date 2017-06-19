@@ -1,8 +1,9 @@
 from flask import Flask, render_template
 from celery import Celery
 from app.api.v1 import tasks, auth
+from dotenv import load_dotenv, find_dotenv
 
-
+load_dotenv(find_dotenv())
 # celeryApp = Celery('tasks', broker='amqp://guest@rabbit1')
 #
 # @celeryApp.task

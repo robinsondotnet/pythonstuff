@@ -7,3 +7,5 @@ Spark
 Celery
 Flask-Webpack
 gunicorn
+python-dotenv
+facepy
