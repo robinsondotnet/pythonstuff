@@ -3,6 +3,9 @@ import os
 from facepy import GraphAPI
 
 class GraphService(object):
+    '''
+        fb graphql service
+    '''
 
     def __init__(self):
         access_token = os.environ.get("ACCESS_TOKEN")

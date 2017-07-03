@@ -9,3 +9,5 @@ Flask-Webpack
 gunicorn
 python-dotenv
 facepy
+jedi
+service_factory
